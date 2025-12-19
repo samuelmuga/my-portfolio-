@@ -14,6 +14,7 @@ It is built using HTML, CSS, and JavaScript with a focus on clean design, respon
 - HTML5
 - CSS3
 - JavaScript (Vanilla)
+
 ## 📂 Project Structure
 
 portfolio1/
