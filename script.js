@@ -96,3 +96,40 @@ window.addEventListener('click', (e) => {
 // Load repos when page loads
 document.addEventListener('DOMContentLoaded', fetchGitHubRepos);
 
+const form = document.getElementById("contact-form");
+const status = document.getElementById("status");
+
+const scriptURL =
+  "https://script.google.com/macros/s/AKfycbyusfAoyqWBQdleOlGo8eBOPTHaLumSJTaYK1TY-j4rImdgzLoJbpGWjrSOxwiWI9jJqQ/exec";
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
+
+  fetch(scriptURL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      name: form.name.value,
+      email: form.email.value,
+      message: form.message.value,
+    }),
+  })
+    .then(() => {
+      status.innerHTML = "Message sent successfully!";
+      form.reset();
+    })
+    .catch(() => {
+      status.innerHTML = "Error sending message.";
+    });
+  
+});
+
